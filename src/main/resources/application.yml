@@ -1,0 +1,31 @@
+# Tomcat
+server:
+  tomcat:
+    uri-encoding: UTF-8
+    max-threads: 1000
+    min-spare-threads: 30
+  port: 8088
+#spring
+spring:
+  # 指定静态资源的路径
+  resources:
+    static-locations: classpath:/static/,classpath:/views/,file:${web.upload},file:${web.ueditorUpload}
+  datasource:
+    driver-class-name: org.sqlite.JDBC
+    # 方式一：  引用外部文件
+    #        url: jdbc:sqlite:D:/eclipse/xy.db
+    #方式二： 引用项目中的文件
+    url: jdbc:sqlite::resource:static/sqlite/wlh.db
+    username:
+    password:
+
+# Mybatis配置
+mybatis:
+  mapperLocations: classpath:mapper/**/*.xml
+  #configLocation: classpath:mybatis.xml
+# sql打印
+logging:
+  level: debug
+  level.com.xuanyin: debug
+  path: logs/
+#    file: admin.log
